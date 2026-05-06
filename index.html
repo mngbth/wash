@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Fehi Reyru Wash</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
 
 <style>
 * {
@@ -19,38 +22,38 @@ body {
     overflow-x: hidden;
 }
 
-/* SPLASH → EXPANDS */
+/* SPLASH */
 #splash {
-    position: relative;
     width: 100%;
     min-height: 100vh;
     background: radial-gradient(circle at center, #0f3d2e, #02110c);
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     transition: 1s ease;
 }
 
-/* compact mode (initial) */
 #splash.compact {
     height: 100vh;
-    overflow: hidden;
+    justify-content: center;
 }
 
-/* expanded mode */
 #splash.expanded {
     padding-bottom: 60px;
 }
 
-/* TOP INTRO */
+/* INTRO */
 .intro {
     text-align: center;
-    z-index: 2;
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 15px;
 }
 
 .intro h1 {
-    font-size: 48px;
+    font-size: 42px;
     letter-spacing: 3px;
     color: #00ffae;
 }
@@ -58,21 +61,6 @@ body {
 .intro p {
     opacity: 0.7;
     margin-top: 10px;
-}
-
-/* glow */
-.glow {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(#00ffae55, transparent);
-    position: absolute;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: .5; }
-    100% { transform: scale(2); opacity: 0; }
 }
 
 /* BUTTON */
@@ -85,38 +73,31 @@ body {
     color: black;
     font-weight: bold;
     cursor: pointer;
-    transition: .3s;
 }
 
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* HERO */
-.hero {
-    margin-top: 100px;
-    text-align: center;
+/* HERO FULLSCREEN */
+.hero-image {
+    width: 100%;
+    height: 100vh;
+    margin-top: 40px;
     opacity: 0;
     transform: translateY(40px);
     transition: 1s;
 }
 
-#splash.expanded .hero {
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* KEY: edge-to-edge without distortion */
+    display: block;
+}
+
+#splash.expanded .hero-image {
     opacity: 1;
     transform: translateY(0);
 }
 
-.hero h1 {
-    font-size: 42px;
-    color: #00ffae;
-}
-
-.hero p {
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
-/* SERVICES */
+/* SECTIONS */
 .section {
     padding: 60px 20px;
     text-align: center;
@@ -130,6 +111,7 @@ body {
     transform: translateY(0);
 }
 
+/* CARDS */
 .cards {
     display: flex;
     gap: 20px;
@@ -143,23 +125,28 @@ body {
     padding: 20px;
     width: 250px;
     border-radius: 20px;
-    backdrop-filter: blur(10px);
-    transition: .3s;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    background: rgba(0,255,174,0.1);
+/* CONTACT */
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+    align-items: center;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    opacity: 0.6;
+.contact-btn {
+    width: 260px;
+    padding: 12px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00ffae, #00c853);
 }
 
-/* WHATSAPP */
+/* FLOATING WHATSAPP */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -170,6 +157,14 @@ footer {
     font-size: 20px;
     color: white;
     text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    opacity: 0.6;
 }
 </style>
 
@@ -178,19 +173,17 @@ footer {
 
 <div id="splash" class="compact">
 
-    <div class="glow"></div>
-
     <!-- INTRO -->
     <div class="intro">
+        <img src="logo.png" class="logo" alt="Logo">
         <h1>FEHI REYRU</h1>
         <p>Premium Bike Wash</p>
         <button class="btn" onclick="expand()">Enter</button>
     </div>
 
-    <!-- HERO -->
-    <div class="hero">
-        <h1>Ride Clean. Shine Bright.</h1>
-        <p>Professional motorbike washing service</p>
+    <!-- HERO FULLSCREEN (NO OVERLAY) -->
+    <div class="hero-image">
+        <img src="heros.png" alt="Hero">
     </div>
 
     <!-- SERVICES -->
@@ -218,17 +211,30 @@ footer {
         </div>
     </section>
 
+    <!-- CONTACT -->
+    <section class="section">
+        <h2>Contact</h2>
+
+        <div class="contacts">
+            <a class="contact-btn" href="https://t.me/moosanaeem" target="_blank">Telegram: @moosanaeem</a>
+            <a class="contact-btn" href="https://wa.me/9607958020" target="_blank">WhatsApp: +960 7958020</a>
+            <a class="contact-btn" href="viber://chat?number=%2B9607958020">Viber: +960 7958020</a>
+            <a class="contact-btn" href="sms:+9607958020">SMS: +960 7958020</a>
+            <a class="contact-btn" href="mailto:mngbth@gmail.com">Email: mngbth@gmail.com</a>
+            <a class="contact-btn" href="https://maps.app.goo.gl/zCVF53GjiYjAxp8fA" target="_blank">📍 View Location</a>
+        </div>
+    </section>
+
     <footer>
         © 2026 Fehi Reyru Wash
     </footer>
 
 </div>
 
-<!-- WHATSAPP -->
+<!-- FLOATING WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/9607958020" target="_blank">💬</a>
 
 <script>
-// auto expand
 setTimeout(expand, 2500);
 
 function expand() {
@@ -236,9 +242,8 @@ function expand() {
     splash.classList.remove("compact");
     splash.classList.add("expanded");
 
-    // scroll down slightly after expand (nice effect)
     setTimeout(() => {
-        window.scrollTo({ top: 200, behavior: "smooth" });
+        window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
     }, 600);
 }
 </script>
