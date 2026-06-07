@@ -1,131 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="dv" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fehi Reyru Wash</title>
-<link rel="icon" href="favicon.png">
-
+<title>ފެހި ރޭރު ގަރާޖު</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
-
-body{background:#0b1f1a;color:#fff;text-align:center;padding:20px;line-height:1.5}
-
-img{max-width:100%;height:auto}
-
-h1{color:#00ffae;margin:10px 0}
-
-p{opacity:.8}
-
-.btn,.contact-btn{
-display:block;margin:12px auto;padding:12px;
-max-width:260px;border-radius:25px;
-background:#00ffae;color:#000;text-decoration:none;font-weight:600
+@font-face{
+  font-family:"Faruma";
+  src:url("Faruma.ttf") format("truetype");
+  font-display:swap;
 }
-.btn:hover,.contact-btn:hover{opacity:.8}
+/* =========================
+   DESIGN SYSTEM
+========================= */
+:root{
+  --bg1:#f5fff7;
+  --bg2:#e8f8ee;
+  --card:#ffffffcc;
+  --primary:#1f8f55;
+  --primaryDark:#166b40;
+  --text:#163221;
+  --muted:#4d6b59;
+  --shadow:0 10px 25px rgba(0,0,0,0.06);
+  --radius:14px;
+}
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:12px;margin-top:20px
+/* =========================
+   RESET
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Faruma", sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  font-size:1.4rem;
+  line-height:1.8;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header{
+  text-align:center;
+  padding:20px 10px 10px;
+}
+
+.logo{
+  width:140px;
+  height:auto;
+}
+
+.title{
+  font-size:2.2rem;
+  color:var(--primary);
+  margin-top:10px;
+}
+
+.subtitle{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-group{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin:20px auto;
+  max-width:320px;
+}
+
+.btn{
+  background:var(--primary);
+  color:#fff;
+  padding:12px;
+  border-radius:999px;
+  text-decoration:none;
+  text-align:center;
+  font-weight:bold;
+  box-shadow:var(--shadow);
+  transition:0.2s ease;
+}
+
+.btn:hover{
+  background:var(--primaryDark);
+  transform:translateY(-1px);
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+.hero{
+  width:100%;
+  border-radius:var(--radius);
+  margin:20px 0;
+  box-shadow:var(--shadow);
+}
+
+/* =========================
+   SECTION
+========================= */
+.section{
+  margin-top:40px;
+}
+
+.section h2{
+  text-align:center;
+  color:var(--primaryDark);
+  margin-bottom:20px;
+}
+
+/* =========================
+   GRID CARDS
+========================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
 }
 
 .card{
-background:#ffffff10;padding:14px;border-radius:10px;text-align:left
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+  transition:0.2s ease;
 }
-.card:hover{background:#ffffff18}
 
-.section{margin-top:40px}
-
-.contacts{margin-top:10px}
-
-.whatsapp{
-position:fixed;bottom:15px;right:15px;
-background:#25D366;color:#fff;
-padding:12px;border-radius:50%;text-decoration:none
+.card:hover{
+  transform:translateY(-3px);
 }
-.whatsapp:hover{opacity:.8}
 
-footer{margin-top:30px;opacity:.6;font-size:14px}
+.card h3{
+  color:var(--primaryDark);
+  margin-bottom:8px;
+}
+
+.price{
+  margin-top:10px;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+  margin-top:15px;
+}
+
+.contact{
+  background:#fff;
+  padding:12px;
+  border-radius:999px;
+  text-decoration:none;
+  color:var(--text);
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+
+/* =========================
+   FLOAT BUTTON
+========================= */
+.float{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#25D366;
+  color:#fff;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  box-shadow:var(--shadow);
+  font-size:22px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  text-align:center;
+  margin:40px 0 10px;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+/* =========================
+   MOBILE SAFETY
+========================= */
+img{
+  max-width:100%;
+}
 </style>
 </head>
 
 <body>
 
-<img src="logo.png" width="200" alt="logo">
-<h1>FEHI REYRU</h1>
-<p>Motorbike wash, polish and oil services.</p>
+<div class="container">
 
-<a class="btn" href="sms:+9607958020">Book a Bike Wash</a>
-<a class="btn" href="https://reyru.com/">Book a MotorBike Ride</a>
-<img src="heros.png" alt="motorbike wash">
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" class="logo" alt="ލޯގޯ">
+    <div class="title">ފެހި ރޭރު ގަރާޖު</div>
+    <div class="subtitle"ސައިކަލު ދޮވެ ބެލެހެއްޓުމަށް ބޭނުންވާ ގިނަ ހިދުމަތްތަށް</div>
 
-<section class="section">
-<h2>Keep Your Motorcycle Reliable and Safe</h2>
+    <div class="btn-group">
+      <a class="btn" href="sms:+9607958020">ސައިކަލު ދޮންނަންވީމަ ގުޅާލާ!</a>
+      <a class="btn" href="https://reyru.com/">ސައިކަލު ކުއްޔަށް ނަންގަވާ!</a>
+    </div>
+  </div>
 
-<div class="cards">
+  <!-- HERO -->
+  <img src="heros.png" class="hero" alt="ސަރވިސް">
 
-<div class="card">
-<h3>Regular Bike Wash</h3>
-<p>Bring your motorcycle for a wash every 2-4 weeks to remove salt, sand, dust, and dirt that can cause rust and wear. Regular cleaning helps us identify leaks, loose bolts, worn tyres, and other problems before they become expensive repairs. Motorcycles that are not washed regularly may suffer from corrosion, faded plastics, seized switches, and reduced resale value.</p>
-<h4>MVR 100/-</h4>
+  <!-- SERVICES -->
+  <div class="section">
+    <h2>ސައިކަލަށް އަޅާލައި ބަލަހައްޓަމާ!</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>މަހަކު އެއްފަހަރު ސައިކަލުދޮވެލުން މުހިއްމު</h3>
+        <p>ސައިކަލުގެ އިންޖީނާއި ދަތި ދޭތެރެތަކުގައި ހުންނަ ހިރަފުހާއި ވެލި ފިލުވައި ރަނގަޅަށް ތެޔޮޖަހައި، ސާފުކޮށް، ކިޓްކޮށް، މަޑި ވެކްސްކޮށް، ޓަޔަރ ވެކްސްކޮށް ރަނަގަޅަށް ނުބަހައްޓާނަމަ ވަރަށް އަވަހަށް މައްސަލަޖެހި މަރާމާތަށް ބޮޑު ހޭދައެއް ކުރަން ޖެހިދާނެ. އަޅުގަނޑުމެން ދޮވެދޭއިރު ސައިކަލުގެ ހުރިހާ ހިސާބަކުން ވެއްޔާއި ހިރަފުސް ފޮޅުމަށްފަހު، ސައިބޯނި ނުވަތަ ޝޭމްޕޫ ލައިގެން ދޮވެ، ފެންލައި، ހިއްކައި، ޕްރޮޓެކްޓެންޓް ލައިދީ، މަޑި ސާފުކޮށް، މަޑީގައި ފެން ހަރުލުން ކުޑަކޮށްދޭ ސްޕްރޭ ޖަހައިދެން. </p>
+        <div class="price">MVR 100</div>
+      </div>
+
+      <div class="card">
+        <h3>ތިން މަހުން އެއްފަހަރު އަޑީތެޔޮ ބަދަލުކުރައްވާ! </h3>
+        <p> އިންޖީނު ހޫނުވެ ދޮންބޮޑުވާނަމަ އަޑީތެޔޮ ޗެކްކޮށްލައްވާ! އަޅުގަނޑުމެން ބޭނުންކުރަނީ ރައްޖޭގައި ބޭނުންކުރުމަށް ހާއްސަ މޮޅު އަޑީތެޔޮ. އަދި ތެޔޮ ބަދަލުކުރުމަށްޓަކައި ތޮޔޮ އެއްކޮށް ހުސްކޮށް އިންޖީނުގެ އެތެރެ ރީތިކޮށް ސާފުވަންދެން ބެހެއްޓުމަށް ފަހު ތާޒާ އަޑީތެޔޮ އަޅައިދެން. </p>
+        <div class="price">MVR 100</div>
+      </div>
+
+      <div class="card">
+        <h3> ސައިކަލު އޮފްކޮށްލަމާ!</h3>
+        <p>އަވީގެ ސަބަބުން ސައިކަލުގެ ކުލަ ވެއްޓި އޮފްކަން ކެނޑި ބާވާންފަށަ. ކިޓްކޮށް، ބަފްކޮށްލުމުން ސައިކަލުގެ އަސްލު ރީތިކުލަ ވިދުމާއެކު ހާމަވެގެންދެ. މީގެ އިތުރުން އަވިންނާއި ވައިގެ ތެރޭގައި ހުންނަ ލޮނުގެ އަސަރުން ސައިކަލަށް ލިބޭ ގެއްލުންތަކުން ސައިކަލު ސަލާމަތް ކުރެވޭނީ ގަވައިދުން ކިޓްކޮށް ބަލަހައްޓާނަމަ. އަޅުގަނޑުމެން ފުލް ކިޓް ކޮށްދެނީ މުޅި ސައިކަލު އެއްކޮށް ދޮވެ ސާފުކުރުމަށް ފަހު.</p>
+        <div class="price">MVR 150</div>
+      </div>
+
+      <div class="card">
+  <h3>ހަ މަހުން އެއްފަހަރު ގިއަރ ތެޔޮ ބަދަލުކޮށްލާ!</h3>
+        <p>ފުރޮޅުގެ ސޯބުތަށް ސަލާމަތުން ހުންނާނީ އެއަށް ބޭނުންވާ ތެޔޮ ލިބިގެން.  ގިޔަރު ތެޔޮބަދަލުކުރުން ފަދަ ކުޑަކުޑަކަމެއް ނުކޮށްދޫކޮއްލެވިއްޖެނަމަ މުޅި ފުރޮޅުވެސް ހަލާކުވެ ބަދަލުކުރަން ޖެހިދާނެ. </p>
+        <div class="price">MVR 50</div>
+      </div>
+
+      <div class="card">
+        <h3>މިކޮޅަށް އާދޭ!</h3>
+        <p>ސުވިޗްތަކާއި ދަބަރު ހުރި ތަންތަނަށް ޑަބްލިޔު ޑީ ސާޅިސް ޖަހާލަން އާދޭ!. ހަމަ މުޅިން ހިލޭ! </p>
+        <div class="price">ހިލޭ!</div>
+      </div>
+
+      <div class="card">
+        <h3>ވައި ޖަހައިފިންތޯ؟</h3>
+        <p>ފުރޮޅުގައި ވައި ނެތި ދުއްވާނަމަ ޓަޔަރާއި ވޮށި ވަރަށް އަވަހަށް ހަލާކުވެދާނެ. އަވަހަށް އާދޭ ވައި ޖަހަން. މުޅިން ހިލޭ!.</p>
+        <div class="price">ހިލޭ!</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <h2>ގުޅާލީމާ މިދަނީ!</h2>
+
+    <div class="contact-grid">
+      <a class="contact" href="https://wa.me/9607958020">ވޮޓްސްއެޕް</a>
+      <a class="contact" href="https://t.me/moosanaeem">ޓެލެގްރާމް</a>
+      <a class="contact" href="sms:+9607958020">އެސްއެމްއެސް</a>
+      <a class="contact" href="mailto:mngbth@gmail.com">އީމެއިލް</a>
+      <a class="contact" href="https://maps.app.goo.gl/zCVF53GjiYjAxp8fA">މީ ލޮކޭޝަން</a>
+    </div>
+  </div>
+
+  <footer>© 2026 ފެހި ރޭރު، 7238020</footer>
+
 </div>
 
-<div class="card">
-<h3>Engine Oil Change</h3>
-<p>Engine oil should be changed every three months or 2,000-3,000 km, whichever comes first. Fresh oil lubricates engine components, reduces wear, and helps keep the engine cool. Delaying oil changes can result in increased engine wear, overheating, poor fuel economy, loss of power, and costly engine repairs. A simple oil change can significantly extend engine life.</p>
-<h4>MVR 100/-</h4>
-</div>
-
-<div class="card">
-<h3>Wash and Polish</h3>
-<p>We recommend polishing every 1-3 months to protect your motorcycle from strong sunlight, salty air, and harsh weather. Polishing creates a protective layer that helps preserve paint, plastics, and metal surfaces. Without regular protection, surfaces can become dull, faded, oxidized, and more difficult to restore.</p>
-<h4>MVR 150/-</h4>
-</div>
-
-<div class="card">
-<h3>Gear Oil Change</h3>
-<p>Gear oil should be refilled or changed at regular intervals of 6-12 months to protect gears and bearings from wear. Fresh gear oil ensures smooth operation and helps prevent costly transmission problems. Ignoring gear oil changes may cause excessive wear, noisy operation, reduced performance, and expensive repairs.</p>
-<h4>MVR 50/-</h4>
-</div>
-
-<div class="card">
-<h3>Plastic & Switch Protection</h3>
-<p>Protecting plastics, rubber parts, switches, and exposed metal helps prevent fading, cracking, corrosion, and premature ageing. Regular treatment keeps your motorcycle looking newer, functioning properly, and better protected from salt and UV damage. Preventive care costs far less than replacing damaged parts.</p>
-<h4>Free</h4>
-</div>
-
-<div class="card">
-<h3>Tyre Pressure & Brake Fluid Service</h3>
-<p>Tyre pressure should be checked at least once a month for safer handling, better fuel economy, and longer tyre life. Brake fluid should be replaced every 2 years to maintain reliable braking performance. Neglecting these simple services can lead to poor braking, uneven tyre wear, reduced stability, and increased accident risk.</p>
-<h4>Free</h4>
-</div>
-
-
-<div class="card">
-<h3>Coolant Service</h3>
-<p>Coolant should be inspected every 6 months and completely replaced every 2 years. Coolant prevents overheating, lubricates the water pump, and protects the cooling system from corrosion. Old or low coolant can cause overheating, radiator damage, water pump failure, head gasket problems, and severe engine damage. Regular coolant service helps ensure reliable performance and avoids expensive repairs.</p>
-<h4>MVR 100/-</h4>
-</div>
-</div>
-</section>
-
-<section class="section">
-<h2>Contact</h2>
-
-<div class="contacts">
-<a class="contact-btn" href="https://t.me/moosanaeem" target="_blank">Telegram: @moosanaeem</a>
-<a class="contact-btn" href="https://wa.me/9607958020" target="_blank">WhatsApp: +960 7958020</a>
-<a class="contact-btn" href="viber://chat?number=%2B9607958020">Viber: +960 7958020</a>
-<a class="contact-btn" href="sms:+9607958020">SMS: +960 7958020</a>
-<a class="contact-btn" href="mailto:mngbth@gmail.com">Email: mngbth@gmail.com</a>
-<a class="contact-btn" href="https://maps.app.goo.gl/zCVF53GjiYjAxp8fA" target="_blank">📍 View Location</a>
-</div>
-</section>
-
-<footer>© 2026 Fehi Reyru Wash</footer>
-
-<a class="whatsapp" href="https://wa.me/9607958020">💬</a>
+<a class="float" href="https://wa.me/9607958020">💬</a>
 
 </body>
 </html>
