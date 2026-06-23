@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fehi Reyru Invoice</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#eaeaea;
+padding:10px;
+}
+
+.invoice{
+max-width:380px;
+margin:auto;
+background:#fff;
+padding:12px;
+font-size:20px;
+color:#000;
+}
+
+.logo{
+text-align:center;
+margin-bottom:8px;
+}
+
+.logo img{
+width:90px;
+}
+
+.title{
+text-align:center;
+font-weight:bold;
+font-size:22px;
+}
+
+.address{
+text-align:center;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.row{
+margin-top:12px;
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-bottom:3px;
+font-size:18px;
+}
+
+.line{
+border-bottom:2px solid #000;
+min-height:34px;
+padding:4px;
+font-size:22px;
+}
+
+.inline{
+display:flex;
+gap:10px;
+}
+
+.inline .line{
+flex:1;
+}
+
+.edit{
+outline:none;
+}
+
+.number{
+text-align:right;
+}
+
+.buttons{
+margin-top:6px;
+}
+
+.buttons button{
+padding:8px 10px;
+margin:2px;
+font-size:16px;
+background:#2f7d32;
+color:#fff;
+border:none;
+border-radius:5px;
+}
+
+.total{
+font-size:26px;
+font-weight:bold;
+}
+
+.note{
+margin-top:15px;
+font-size:18px;
+line-height:1.4;
+}
+
+.actionBtn{
+margin-top:15px;
+width:100%;
+padding:12px;
+font-size:18px;
+background:#111;
+color:#fff;
+border:none;
+border-radius:6px;
+}
+
+@media print{
+.buttons,.actionBtn{
+display:none;
+}
+body{
+background:#fff;
+padding:0;
+}
+.invoice{
+max-width:58mm;
+padding:5px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="invoice" id="invoice">
+
+<div class="logo">
+<img src="logo.png">
+</div>
+
+<div class="title">Fehi Reyru Garage</div>
+<div class="address">
+Janavary Goalhi<br>
+A.A. Thoddoo
+</div>
+
+<div class="row inline">
+<div style="flex:1;">
+<label>Bill No</label>
+<div class="line" id="bill"></div>
+</div>
+
+<div style="flex:1;">
+<label>Bike No</label>
+<div class="line edit" contenteditable="true"></div>
+</div>
+</div>
+
+<div class="row">
+<label>Contact Number</label>
+<div class="line edit" contenteditable="true"></div>
+</div>
+
+<div class="row">
+<label>Service Description</label>
+<div class="line" id="desc"></div>
+
+<div class="buttons" id="btns">
+<button onclick="setService(this)">Washing</button>
+<button onclick="setService(this)">Wash and Oil Change</button>
+<button onclick="setService(this)">Oil Change</button>
+<button onclick="setService(this)">Full Kit</button>
+<button onclick="setService(this)">Gear Oil</button>
+<button onclick="setService(this)">Coolant Refill</button>
+</div>
+</div>
+
+<div class="row">
+<label>Total Amount</label>
+<div class="line edit number" contenteditable="true" id="amount" oninput="calc()"></div>
+</div>
+
+<div class="note">
+Please settle the bill as soon as possible.<br><br>
+
+Account Number: BML<br>
+7730000756141 Fehi Reyru<br><br>
+
+Account Number MIB<br>
+90503101393531000 Moosa Naeem<br><br>
+
+Payment Gateway BML:<br>
+https://pay.bml.com.mv/shops/217f01d2<br><br>
+
+Send the Slip to Viber Number: 7958020
+</div>
+
+<button class="actionBtn" id="downloadBtn" onclick="downloadJPEG()">
+Download Invoice as JPEG
+</button>
+
+</div>
+
+<script>
+
+// BILL NUMBER
+function generateBill(){
+let d=new Date();
+
+let dd=String(d.getDate()).padStart(2,'0');
+let mm=String(d.getMonth()+1).padStart(2,'0');
+let yy=String(d.getFullYear()).slice(-2);
+let hh=String(d.getHours()).padStart(2,'0');
+let mi=String(d.getMinutes()).padStart(2,'0');
+
+document.getElementById('bill').innerText =
+dd+mm+yy+hh+mi;
+}
+generateBill();
+
+
+// SERVICE SELECT
+function setService(btn){
+document.getElementById('desc').innerText = btn.innerText;
+document.getElementById('btns').style.display='none';
+}
+
+
+// TOTAL
+function calc(){
+let v=document.getElementById('amount').innerText
+.replace(/[^0-9.]/g,'');
+document.getElementById('amount').innerText=v;
+}
+
+
+// DOWNLOAD FIXED JPEG
+async function downloadJPEG(){
+
+let btn=document.getElementById("downloadBtn");
+btn.style.display="none"; // hide button during capture
+
+const element=document.getElementById("invoice");
+
+const canvas = await html2canvas(element,{
+scale:2,
+useCORS:true,
+backgroundColor:"#ffffff",
+scrollX:0,
+scrollY:0
+});
+
+const img = canvas.toDataURL("image/jpeg",1.0);
+
+const link=document.createElement("a");
+link.download="Fehi_Reyru_Invoice.jpg";
+link.href=img;
+link.click();
+
+btn.style.display="block"; // restore button
+}
+
+</script>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+</body>
+</html>
